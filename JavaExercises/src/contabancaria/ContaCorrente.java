@@ -1,66 +1,166 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package contabancaria;
 
+/**
+ *
+ * @author Gui e Di
+ */
 public class ContaCorrente {
-    
-    String nome;
-    String numeroDaConta;
-    String agencia;
-    boolean especial;
-    double limiteEspecial;
-    double valorEspecialUsado;
-    double saldo;
-    
 
-    
-    boolean retirarDinheiro(double valorSaque){
-        if (saldo >= valorSaque){
+    private String nome;
+    private String numeroDaConta;
+    private String agencia;
+    private boolean especial;
+    private double limiteEspecial;
+    private double valorEspecialUsado;
+    private double saldo;
+
+    public ContaCorrente() {
+    }
+
+    public ContaCorrente(String nome, String numeroDaConta, String agencia, boolean especial, double limiteEspecial, double valorEspecialUsado, double saldo) {
+        this.nome = nome;
+        this.numeroDaConta = numeroDaConta;
+        this.agencia = agencia;
+        this.especial = especial;
+        this.limiteEspecial = limiteEspecial;
+        this.valorEspecialUsado = valorEspecialUsado;
+        this.saldo = saldo;
+    }
+
+    /**
+     * @return the nome
+     */
+    public String getNome() {
+        return nome;
+    }
+
+    /**
+     * @param nome the nome to set
+     */
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    /**
+     * @return the numeroDaConta
+     */
+    public String getNumeroDaConta() {
+        return numeroDaConta;
+    }
+
+    /**
+     * @param numeroDaConta the numeroDaConta to set
+     */
+    public void setNumeroDaConta(String numeroDaConta) {
+        this.numeroDaConta = numeroDaConta;
+    }
+
+    /**
+     * @return the agencia
+     */
+    public String getAgencia() {
+        return agencia;
+    }
+
+    /**
+     * @param agencia the agencia to set
+     */
+    public void setAgencia(String agencia) {
+        this.agencia = agencia;
+    }
+
+    /**
+     * @return the especial
+     */
+    public boolean isEspecial() {
+        return especial;
+    }
+
+    /**
+     * @param especial the especial to set
+     */
+    public void setEspecial(boolean especial) {
+        this.especial = especial;
+    }
+
+    /**
+     * @return the limiteEspecial
+     */
+    public double getLimiteEspecial() {
+        return limiteEspecial;
+    }
+
+    /**
+     * @param limiteEspecial the limiteEspecial to set
+     */
+    public void setLimiteEspecial(double limiteEspecial) {
+        this.limiteEspecial = limiteEspecial;
+    }
+
+    /**
+     * @return the valorEspecialUsado
+     */
+    public double getValorEspecialUsado() {
+        return valorEspecialUsado;
+    }
+
+    /**
+     * @param valorEspecialUsado the valorEspecialUsado to set
+     */
+    public void setValorEspecialUsado(double valorEspecialUsado) {
+        this.valorEspecialUsado = valorEspecialUsado;
+    }
+
+    /**
+     * @return the saldo
+     */
+    public double getSaldo() {
+        return saldo;
+    }
+
+    /**
+     * @param saldo the saldo to set
+     */
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
+    public boolean retirarDinheiro(double valorSaque) {
+        if (saldo >= valorSaque) {
             saldo -= valorSaque;
-            System.out.println("Saque efetuado com sucesso.");
-            System.out.println("Saldo atual R$ "+saldo);
             return true;
         } else {
-            if (especial){
+            if (especial) {
                 double limite = limiteEspecial + saldo;
-                if (limite >= valorSaque){
-                    valorEspecialUsado += (valorSaque-saldo);
-                    saldo -= valorSaque;                    
-                    System.out.println("Saque efetuado com sucesso. Limite especial utilizado.");
-                    System.out.println("Saldo atual R$ "+saldo);
+                if (limite >= valorSaque) {
+                    saldo -= valorSaque;
+                    valorEspecialUsado += (valorSaque - saldo);
                     return true;
                 } else {
-                    System.out.println("Saldo insuficiente!");
-                    System.out.println("Saldo atual R$ "+saldo);
                     return false;
                 }
-            } else {               
-                System.out.println("Saldo insuficiente!");
-                System.out.println("Saldo atual R$ "+saldo);
+            } else {
                 return false;
             }
         }
     }
-    
-    void depositos (double valorDeposito){
+
+    public void depositos(double valorDeposito) {
         saldo += valorDeposito;
-        System.out.println("Deposito realizado com sucesso");
-        System.out.println("Saldo atual R$ "+saldo);
     }
-    
-    void consultarSaldo(){
-        System.out.println("Saldo atual R$ "+saldo); 
+
+    public void consultarSaldo() {
+        System.out.println("Saldo atual R$ " + saldo);
     }
-    
-    
-    void verificaUsandoChequeEspecial() {
-        if (valorEspecialUsado == 0){
-            System.out.println("Não esta usando cheque especial");
-            System.out.println("O limite atual é de R$ "+(limiteEspecial - valorEspecialUsado));
-        } else {
-            System.out.println("Esta usando o cheque especial");
-            System.out.println("O limite atual é de R$ "+(limiteEspecial - valorEspecialUsado));
-        }
-        
+
+    public boolean verificaUsandoChequeEspecial() {
+        return saldo < 0;
+
     }
-    
-   
+
 }

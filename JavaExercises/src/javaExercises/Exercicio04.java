@@ -2,11 +2,12 @@ package javaExercises;
 
 import java.util.Scanner;
 
-public class JogoDaVelhaExecutar {
-    public static void main(String[] args) {
+
+public class Exercicio04 {
+     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         
-        JogoDaVelhaObjeto jogoDaVelha = new JogoDaVelhaObjeto();
+        JogoDaVelha jogoDaVelha = new JogoDaVelha();
         
         System.out.println("Jogador 1 = X");
         System.out.println("Jogador 2 = O");
@@ -28,7 +29,9 @@ public class JogoDaVelhaExecutar {
             linha = valor("Linha", scan);
             coluna = valor("Coluna", scan);
             
-            jogoDaVelha.validarJogada(linha, coluna, sinal);
+            if (!jogoDaVelha.validarJogada(linha, coluna, sinal)){
+                System.out.println("Posição ja usada tente novamente!");
+            }
             
             jogoDaVelha.imprimirTabuleiro();
             
@@ -38,7 +41,7 @@ public class JogoDaVelhaExecutar {
             } else if (jogoDaVelha.verificarGanhador('O')){                
                 ganhou = true;
                 System.out.println("Parabéns, o jogador 2 ganhou!");
-            } else if (jogoDaVelha.jogada > 9) {
+            } else if (jogoDaVelha.getJogada() > 9) {
                 ganhou = true;
                 System.out.println("Ninguém ganhou essa partida.");
             }
@@ -60,5 +63,5 @@ public class JogoDaVelhaExecutar {
         valor--;
         return valor;
     } 
-        
+       
 }
