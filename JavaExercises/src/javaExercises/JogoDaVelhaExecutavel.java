@@ -3,7 +3,7 @@ package javaExercises;
 import java.util.Scanner;
 
 
-public class Exercicio04 {
+public class JogoDaVelhaExecutavel {
      public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         
