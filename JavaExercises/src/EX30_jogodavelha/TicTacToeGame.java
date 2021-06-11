@@ -1,4 +1,4 @@
-package javaExercises;
+package EX30_jogodavelha;
 
 import java.util.Scanner;
 

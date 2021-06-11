@@ -1,5 +1,5 @@
 
-package javaExercises;
+package EX30_jogodavelha;
 
 
 public class JogoDaVelha {    
