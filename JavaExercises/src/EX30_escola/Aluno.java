@@ -5,10 +5,6 @@
  */
 package EX30_escola;
 
-/**
- *
- * @author Gui e Di
- */
 public class Aluno {
     
     private String nome;
