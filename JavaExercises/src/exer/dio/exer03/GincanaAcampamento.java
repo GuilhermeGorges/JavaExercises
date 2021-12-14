@@ -50,7 +50,7 @@ public class GincanaAcampamento {
                 if (alunoContagem % 2 == 0) {
                     for (int j = 0; j<alunoContagem; j++){
 
-                        int x = (listaAluno.get(x)++);
+                        //int x = (listaAluno.get(x)++);
 
                     }
                 } else {
