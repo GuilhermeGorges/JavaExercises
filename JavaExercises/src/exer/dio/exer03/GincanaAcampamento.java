@@ -44,22 +44,32 @@ public class GincanaAcampamento {
                 listaAluno.add(aluno);
             }
             int alunoContagem = listaAluno.get(1).getValor();
-
+            int alunoAtual = 0;
+            int alunoEliminado = 0;
             for(int i = 0; i<contador; i++) {
-                int alunoEliminado = 0;
                 if (alunoContagem % 2 == 0) {
-                    for (int j = 0; j<alunoContagem; j++){
+                        alunoEliminado = (listaAluno.size()) - (alunoContagem % listaAluno.size() + alunoAtual) % listaAluno.size();
 
-                        //int x = (listaAluno.get(x)++);
-
-                    }
                 } else {
-                    for (int j = alunoContagem; j> 0; j--){
-
-                    }
+                    alunoEliminado = (alunoAtual % listaAluno.size() + alunoAtual) % listaAluno.size();
                 }
-                alunoContagem = alunoEliminado;
+
+
+                alunoAtual = listaAluno.get(alunoEliminado).getValor();
+                listaAluno.remove(alunoEliminado);
+
+                alunoAtual = (alunoAtual % 2 == 0) ?
+                        ((alunoEliminado <= listaAluno.size() - 1) ?
+                                alunoEliminado : 0):
+                        ((alunoEliminado == 0) ?
+                                (listaAluno.size() - 1):(alunoEliminado - 1));
             }
+
+
+            System.out.println("Vencedor(a): " + listaAluno.get(0).getNome());
+
+            listaAluno.clear();
+
 
             contador = scan.nextInt();
             if (contador == 0) break;

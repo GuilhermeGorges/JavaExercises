@@ -16,25 +16,25 @@ for igual, deve-se ordernar por ordem alfabética.. Um espaço em branco deve se
 
  */
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Scanner;
 
 public class OrdenacaoTamanho {
 
 
-    public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-
-        int testNumber = Integer.parseInt(scan.next());
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int testNumber = Integer.parseInt(br.readLine());
         List<List<ClassWord>> ordenedList = new ArrayList<>();
-        scan.nextLine();
 
         for(int i = 0; i<testNumber; i++){
             List<ClassWord> wordList = new ArrayList<>();
 
-            String words = scan.nextLine();
+            String words = br.readLine();
             String[] wordsStriped = words.split(" ");
             for (String word : wordsStriped){
                 int size = word.length();
