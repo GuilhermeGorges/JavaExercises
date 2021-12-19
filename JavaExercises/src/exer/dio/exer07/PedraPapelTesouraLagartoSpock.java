@@ -1,4 +1,5 @@
 package exer.dio.exer07;
+
 /*
 Pedra-papel-tesoura-lagarto-Spock é uma expansão do clássico método de seleção em jogo de pedra-papel-tesoura.
 Atua sob o mesmo princípio básico, mas inclui outras duas armas adicionais:
@@ -35,15 +36,12 @@ Para cada caso de teste, imprima quem venceu, ou se houve empate.
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
 
 public class PedraPapelTesouraLagartoSpock {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int numPartidas = Integer.parseInt(br.readLine());
         String winner;
-        List<String> inputList = new ArrayList<>();
         for(int i = 0; i < numPartidas; i++){
             String[] input = br.readLine().split(" ");
             int fernanda = stringToNum(input[0]);
