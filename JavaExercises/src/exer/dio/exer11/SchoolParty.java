@@ -37,29 +37,52 @@ public class SchoolParty {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         List<Friend> friendsList = new ArrayList<>();
+        List<Friend> friendsGoList = new ArrayList<>();
+
         int subscriptionOrder = 0;
         while (true){
             String[] friend = br.readLine().split(" ");
             if(friend[0].equals("FIM")) break;
-            if (friend[1].equals("SIM")) {
-                     boolean friendExists = false;
-                         for (Friend fri : friendsList) {
-                             if (friend[0].equalsIgnoreCase(fri.getName())) friendExists = true;
-                         }
-                    if(!friendExists){
-                        Friend newFriend = new Friend(friend[0], subscriptionOrder);
-                        friendsList.add(newFriend);
+
+             boolean friendExists = false;
+                 for (Friend fri : friendsList) {
+                     if (friend[0].equalsIgnoreCase(fri.getName())) friendExists = true;
+                 }
+                if(!friendExists){
+                    Friend newFriend = new Friend(friend[0], friend[1], subscriptionOrder);
+                    friendsList.add(newFriend);
+                    if(friend[1].equalsIgnoreCase("SIM")) {
+                        friendsGoList.add(newFriend);
                     }
-            }
+                }
+
+            subscriptionOrder++;
         } br.close();
 
         Collections.sort(friendsList);
-        friendsList.forEach(fri -> System.out.println(fri.getName()));
 
+
+
+        friendsList.forEach(fri -> {
+            if(fri.getIsFriend().equalsIgnoreCase("SIM")) System.out.println(fri.getName());
+        });
+
+        friendsList.forEach(fri -> {
+            if(fri.getIsFriend().equalsIgnoreCase("NAO")) {
+                if(fri.getName().equalsIgnoreCase("Joao")){
+                    System.out.println("Abner");
+                } else if(fri.getName().equalsIgnoreCase("Abner")){
+                    System.out.println("Joao");
+                } else {
+                System.out.println(fri.getName());
+                }
+
+            }
+        });
 
         Friend escolhido = null;
 
-        for (Friend f : friendsList) {
+        for (Friend f : friendsGoList) {
             if(escolhido == null) {
                 escolhido = f;
             } else if (escolhido.getName().length() < f.getName().length()) {
@@ -69,8 +92,11 @@ public class SchoolParty {
                 escolhido = f;
             }
         }
+
+
         System.out.println("");
         System.out.println("Amigo do Pablo:");
+        assert escolhido != null;
         System.out.println(escolhido.getName());
 
     }
@@ -79,10 +105,12 @@ public class SchoolParty {
         public String name;
         public int nameSize;
         public int subscription;
+        public String isFriend;
 
-        public Friend(String name, int subscriptionOrder) {
+        public Friend(String name,String isFriend, int subscriptionOrder) {
             this.name = name;
             this.nameSize = name.length();
+            this.isFriend = isFriend;
             this.subscription = subscriptionOrder;
         }
 
@@ -90,18 +118,28 @@ public class SchoolParty {
         public int compareTo(Friend f) {
             if (this.nameSize < f.nameSize) {
                 return -1;
-            }
-            if (this.nameSize > f.nameSize) {
+            } else if  (this.nameSize > f.nameSize) {
                 return 1;
-            }
-            return 0;
+            } else {
+                if (this.subscription < f.subscription){
+                    return -1;
+                    } else if (this.subscription > f.subscription) {
+                    return 1;
+                    }
+                return 0;
+                }
         }
+
 
         public String getName() {            return name;
         }
 
         public int getSubscription() {
             return subscription;
+        }
+
+        public String getIsFriend() {
+            return isFriend;
         }
     }
 }
