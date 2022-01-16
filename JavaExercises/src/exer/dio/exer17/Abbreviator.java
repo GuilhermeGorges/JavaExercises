@@ -31,6 +31,7 @@ import java.io.InputStreamReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 
 public class Abbreviator {
@@ -40,7 +41,7 @@ public class Abbreviator {
         String sentence;
         List<String> sentencesList = new ArrayList<>();
 
-        while (!(sentence = br.readLine()).equals(".")){
+        while (!(sentence = br.readLine().toLowerCase(Locale.ROOT)).equals(".")){
             sentencesList.add(sentence);
         }
         for (String words : sentencesList){
@@ -50,7 +51,7 @@ public class Abbreviator {
     }
 
     public static void abbreviate(String sentence){
-        int abbreviationCounter = 0;
+        long abbreviationCounter = 0;
         String biggestWord = null;
         String biggestWordAbbreviation = "";
         List<String> wordList = List.of(sentence.split(" "));
@@ -59,7 +60,8 @@ public class Abbreviator {
             if (biggestWord==null) biggestWord = word;
             else if (word.length()>biggestWord.length()) biggestWord = word;
         }
-        biggestWordAbbreviation = biggestWord.charAt(0) + ".";
+
+        biggestWordAbbreviation = biggestWord.substring(0,1) + ".";
 
         for (String word: wordList){
             if (word.equals(biggestWord)){
