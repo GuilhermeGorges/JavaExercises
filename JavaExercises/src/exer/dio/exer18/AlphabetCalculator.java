@@ -36,7 +36,7 @@ Para cada caso de teste imprima o valor de hash que é calculado conforme o exem
  */
 import java.util.Scanner;
 
-public class Desafio {
+public class AlphabetCalculator {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
