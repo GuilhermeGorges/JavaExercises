@@ -1,4 +1,4 @@
-package dio;
+package dio.exer23;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -29,7 +29,7 @@ public class PercentCalc {
 
             double percentageCalc = (a-b) / (a/100);
             double diff = Math.abs(Math.round(percentageCalc*100.0)/100.0);
-            
+
             System.out.printf("%.2f%.1s", diff,"%");
 
     }

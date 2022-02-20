@@ -1,4 +1,4 @@
-package exer.dio.exer18;
+package exer.dio.exer19;
 /*
 Jade ganhou de presente de aniversário um telescópio e ficou muito feliz, pois adora olhar a lua à noite.
 Ela sempre foi uma estudante muito boa, e só analizando a lua por duas noites seguidas,
@@ -22,7 +22,7 @@ Baseado nos dois percentuais observados por Jade, imprima na tela a fase na qual
  */
 import java.util.Scanner;
 
-public class Moon {
+public class MoonN {
     public static void main(String[] args) {
         Scanner leitor = new Scanner(System.in);
 
@@ -41,5 +41,4 @@ public class Moon {
         }
 
     }
-}
 }
